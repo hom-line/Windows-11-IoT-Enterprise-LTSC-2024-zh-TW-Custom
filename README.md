@@ -4,7 +4,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 
 本專案以 **Windows 11 IoT Enterprise LTSC 2024 繁體中文 x64** 為參考系統，整合常用 Microsoft Inbox Apps、Windows Optional Features、傳統工具及影音相容性研究，並分別製作 **24H2、25H2、26H2** 三套自訂映像。
 
-**三套映像採用相同的預裝項目與整合配置，主要差別是 Windows 功能版本與 Build。依專案作者最新回報，24H2、25H2、26H2 均已完成安裝測試並可正常使用；逐項 Apps／AC-3／Windows Update 完整回歸記錄仍需另外彙整。** 本專案是獨立的技術研究，不是 Microsoft 或 Dolby 官方發行版。
+**三套映像採用相同的預裝項目與整合配置，主要差別是 Windows 功能版本與 Build。2026-10-31 開發者確認：24H2、25H2、26H2 均已使用各自 ISO 實際全新重灌，安裝及基本使用結果與 24H2 基準一致，故「ISO 全新重灌」項目記錄為 PASS。逐項 Apps、必要 Framework、AC-3、Windows Update 與新版 PowerShell 腳本的完整回歸記錄仍另行區分。** 本專案是獨立的技術研究，不是 Microsoft 或 Dolby 官方發行版。
 
 - Maintainer：[hom-line](https://github.com/hom-line)
 - Language：`zh-TW`
@@ -20,7 +20,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 已整理正式的公開紀錄，供開發者與使用者核對版本來源、製作流程及測試範圍：
 
 - [建置紀錄／三版本製作流程（繁體中文）](docs/BUILD_zh-TW.md) — 24H2、25H2、26H2 的獨立分支、Inbox Apps、FOD、Sysprep、WIM／ISO 與 Setup 修正。
-- [驗收報告／ISO 完整性校驗（繁體中文）](docs/VALIDATION_zh-TW.md) — 三版安裝 PASS、SHA-256 首次與再次驗證 PASS，以及尚未提供完整證據的功能回歸項目。
+- [驗收報告／ISO 完整性校驗（繁體中文）](docs/VALIDATION_zh-TW.md) — 三版 ISO 全新重灌 PASS（開發者實測回報）、SHA-256 首次與再次驗證 PASS，以及尚未提供完整證據的功能回歸項目。
 
 > [!NOTE]
 > ISO Metadata 與 SHA-256 總表已出現在 [24H2 App Release](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3) 的附件中；公開的中繼資料仍應留意隱私與來源欄位。
@@ -32,7 +32,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 | 檔案 | 功能 | 執行模式 |
 |---|---|---|
 | [Provision-InboxApps.ps1](scripts/Provision-InboxApps.ps1) | 合法來源 AppX/MSIX＋授權 XML＋SHA-256 預檢，Framework 優先、17 項 Inbox Apps 佈建 | **預設唯讀預檢**，必須明確使用 `-Apply -AcknowledgeReferenceImage` 才修改 Windows |
-| [Verify-InboxApps.ps1](scripts/Verify-InboxApps.ps1) | 檢查 17 項 App Provisioning、實際 Framework 清單、NetFx3、Fax and Scan、XPS Viewer | **唯讀** |
+| [Verify-InboxApps.ps1](scripts/Verify-InboxApps.ps1) | 檢查 17 項 App Provisioning、依 Manifest 核對必要 Framework、NetFx3、Fax and Scan、XPS Viewer | **唯讀** |
 | [Verify-Windows-Edition.ps1](scripts/Verify-Windows-Edition.ps1) | 檢查 `IoTEnterpriseS`、24H2／25H2／26H2、主 Build、x64、zh-TW | **唯讀** |
 
 - [完整操作教學、合法套件 Manifest 範例](docs/SCRIPTS_zh-TW.md)
@@ -68,8 +68,8 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 | 順序 | 公開 Release | Edition | 版本 | 主 Build | 語言 | 預裝內容 | 安裝測試 |
 |---|---|---|---|---|---|---|---|
 | **1** | [24H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3) | `IoTEnterpriseS` | **24H2** | `26100` | `zh-TW` | 相同配置 | **PASS：新安裝與桌面已驗證** |
-| **2** | [25H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/25H2-App-Experimental) | `IoTEnterpriseS` | **25H2** | `26200` | `zh-TW` | 相同配置 | **PASS：作者回報安裝測試成功** |
-| **3** | [26H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/26H2-App-Experimental) | `IoTEnterpriseS` | **26H2** | `26300` | `zh-TW` | 相同配置 | **PASS：作者回報安裝測試成功** |
+| **2** | [25H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/25H2-App-Experimental) | `IoTEnterpriseS` | **25H2** | `26200` | `zh-TW` | 相同配置 | **PASS：作者確認 ISO 全新重灌成功** |
+| **3** | [26H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/26H2-App-Experimental) | `IoTEnterpriseS` | **26H2** | `26300` | `zh-TW` | 相同配置 | **PASS：作者確認 ISO 全新重灌成功** |
 
 > [!NOTE]
 > 版本表中 `26100`、`26200`、`26300` 是主 Build；`26100.1742`、`26200.9457`、`26300.9457` 等為個別實驗時點曾觀察到的完整 Build，**不代表最新更新，也不保證三版具有相同的累積更新修訂號**。
