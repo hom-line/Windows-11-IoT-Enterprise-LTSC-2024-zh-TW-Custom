@@ -4,7 +4,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 
 本專案以 **Windows 11 IoT Enterprise LTSC 2024 繁體中文 x64** 為參考系統，整合常用 Microsoft Inbox Apps、Windows Optional Features、傳統工具及影音相容性研究，並分別製作 **24H2、25H2、26H2** 三套自訂映像。
 
-**三套映像以相同預裝內容為製作目標，主要差別在 Windows 功能版本與 Build。** 本專案是獨立的技術研究，不是 Microsoft 或 Dolby 官方發行版。
+**三套映像採用相同的預裝項目與整合配置，主要差別是 Windows 功能版本與 Build。依專案作者最新回報，24H2、25H2、26H2 均已完成安裝測試並可正常使用；逐項 Apps／AC-3／Windows Update 完整回歸記錄仍需另外彙整。** 本專案是獨立的技術研究，不是 Microsoft 或 Dolby 官方發行版。
 
 - Maintainer：[hom-line](https://github.com/hom-line)
 - Language：`zh-TW`
@@ -36,13 +36,13 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 
 # ⬇️ Download / 下載與版本狀態
 
-**目前三個版本仍在進行 Release／授權及完整驗收準備。尚未於本 README 提供可驗證的 ISO Release 下載附件。**
+**三個 GitHub Release 頁面已公開，且專案作者回報三個 ISO 均已測試安裝成功。** 目前 Release 頁面尚無 ISO 檔案附件；相關再散布權利與逐項驗收證據仍須確認。
 
-| 順序 | 規劃 Release Tag | Edition | 版本 | 主 Build | 語言 | 預裝內容 | 實測狀態 |
+| 順序 | 公開 Release | Edition | 版本 | 主 Build | 語言 | 預裝內容 | 安裝測試 |
 |---|---|---|---|---|---|---|---|
-| **1** | `24H2-App-R3` | `IoTEnterpriseS` | **24H2** | `26100` | `zh-TW` | 共同配置 | **R3 全新安裝／OOBE／桌面 PASS** |
-| **2** | `25H2-App-Experimental` | `IoTEnterpriseS` | **25H2** | `26200` | `zh-TW` | 共同配置 | 實驗映像，部署回歸待完整確認 |
-| **3** | `26H2-App-Experimental` | `IoTEnterpriseS` | **26H2** | `26300` | `zh-TW` | 共同配置 | 實驗映像，部署回歸待完整確認 |
+| **1** | [24H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3) | `IoTEnterpriseS` | **24H2** | `26100` | `zh-TW` | 相同配置 | **PASS：新安裝與桌面已驗證** |
+| **2** | [25H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/25H2-App-Experimental) | `IoTEnterpriseS` | **25H2** | `26200` | `zh-TW` | 相同配置 | **PASS：作者回報安裝測試成功** |
+| **3** | [26H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/26H2-App-Experimental) | `IoTEnterpriseS` | **26H2** | `26300` | `zh-TW` | 相同配置 | **PASS：作者回報安裝測試成功** |
 
 > [!NOTE]
 > 版本表中 `26100`、`26200`、`26300` 是主 Build；`26100.1742`、`26200.9457`、`26300.9457` 等為個別實驗時點曾觀察到的完整 Build，**不代表最新更新，也不保證三版具有相同的累積更新修訂號**。
@@ -111,7 +111,7 @@ Windows Setup Finalize: FAILED
 
 ---
 
-# 📦 25H2 App — Experimental / 實驗版本
+# 📦 25H2 App — Installation PASS / LTSC-based Experimental
 
 | Item | Value |
 |---|---|
@@ -121,7 +121,7 @@ Windows Setup Finalize: FAILED
 | Build family | `26200` |
 | Previously observed | `26200.9457` |
 | Common Apps / FOD | 與 24H2 相同配置目標 |
-| Status | **Experimental — Full deployment validation pending** |
+| Status | **Experimental — 作者回報安裝測試 PASS；逐項功能回歸仍需確認** |
 
 ## What changed from 24H2?
 
@@ -148,7 +148,7 @@ Microsoft 的 `KB5054156` 是 **25H2 Enablement Package**。官方要求來源�
 
 ---
 
-# 📦 26H2 App — Experimental / 實驗版本
+# 📦 26H2 App — Installation PASS / LTSC-based Experimental
 
 | Item | Value |
 |---|---|
@@ -158,7 +158,7 @@ Microsoft 的 `KB5054156` 是 **25H2 Enablement Package**。官方要求來源�
 | Build family | `26300` |
 | Previously observed | `26300.9457` |
 | Common Apps / FOD | 與 24H2 相同配置目標 |
-| Status | **Experimental — Prerequisite and deployment validation pending** |
+| Status | **Experimental — 作者回報安裝測試 PASS；先決條件與逐項功能回歸仍需確認** |
 
 ## What changed from 24H2?
 
@@ -213,7 +213,7 @@ Microsoft 的 `KB5121794` 是 **26H2 Enablement Package**。官方允許符合�
 
 # 🛍️ Microsoft Inbox Apps / 共用預裝應用程式
 
-**三個版本的共同製作配置：17 項主要 Inbox Apps**，及相依的 Microsoft Framework 套件。此處列的是**套件識別名稱**，不預填未逐版核對的精確 App 版本號。
+**三個版本相同的預裝配置：17 項主要 Inbox Apps**，及相依的 Microsoft Framework 套件。此處列的是**套件識別名稱**，不預填未逐版核對的精確 App 版本號。
 
 ## Microsoft Store / Installer（3）
 
@@ -385,7 +385,7 @@ R3 實驗處理方式：
 4. 用 `wimlib verify`、DISM `/Get-ImageInfo` 驗證。
 5. 製成新 ISO，在全新 VMware 虛擬硬碟安裝。
 
-**R3 最終已成功完成全新安裝／OOBE。** 這證明組合修正有效，但不能將結果直接推論為所有 25H2／26H2 自訂 ISO 都已驗收完成。
+**R3 最終已成功完成全新安裝／OOBE。** 這證明組合修正有效；25H2／26H2 則另依作者最新回報已通過安裝測試，但尚不能因此認定全部 Apps、音訊與 Windows Update 回歸均已通過。
 
 ## WinPE 重新分配磁碟代號
 
@@ -455,7 +455,7 @@ slmgr /xpr
 
 ### Regression Checklist
 
-- [ ] 全新 VM 從 ISO 完整安裝，成功進入 OOBE／桌面
+- [x] ISO 安裝測試（24H2 有安裝／OOBE 畫面；25H2／26H2 由作者回報安裝成功，個別記錄待彙整）
 - [ ] 17 項預裝 Apps 及所需 Framework 運作正常
 - [ ] NetFx3／Fax and Scan／XPS Viewer 正常
 - [ ] WordPad（如適用）可開啟、編輯、儲存
@@ -471,10 +471,10 @@ slmgr /xpr
 | 版本 | 現有證據 | 仍需完成 |
 |---|---|---|
 | **24H2 R3** | Sysprep、WIM 修正、完整性驗證、全新 ISO 安裝與 OOBE **PASS** | 影音實際播放、完整 App／Update 回歸、授權 |
-| **25H2 Experimental** | `26200.9457` 版本畫面、離線 `KB5054156` 製作過程及 WIM 擷取紀錄 | 完整安裝／OOBE／影音驗收與證據保存 |
-| **26H2 Experimental** | `26300.9457` 版本畫面、`KB5121794` 製作研究 | 先決條件、Sysprep／WIM／全新安裝／影音驗收 |
+| **25H2 Experimental** | `26200.9457` 版本畫面、離線 `KB5054156` 製作與 WIM 紀錄；**作者回報安裝測試 PASS** | 逐項 Apps／AC-3／Windows Update 回歸及詳細測試記錄 |
+| **26H2 Experimental** | `26300.9457` 版本畫面、`KB5121794` 製作研究；**作者回報安裝測試 PASS** | 累積更新先決條件、逐項 Apps／AC-3／Windows Update 回歸及詳細測試記錄 |
 
-本表不把尚未確認的測試標成 PASS；當三版真正完成相同的驗收流程時，再更新 Release 狀態。
+本表的安裝 PASS 以已呈現的 24H2 R3 安裝證據與專案作者對三個版本的最新實測回報為基礎；不把尚未取得逐項紀錄的影音、更新等功能回歸自動判定為 PASS。
 
 ---
 
@@ -535,9 +535,9 @@ Edition (test images) : IoTEnterpriseS
 Same preinstalled set : 17 Inbox Apps + required frameworks + FOD + WordPad/AC-3 research
 
 24H2 / Build 26100  : R3 new VM installation / OOBE PASS
-25H2 / Build 26200  : Experimental; full acceptance pending
-26H2 / Build 26300  : Experimental; prerequisites and acceptance pending
+25H2 / Build 26200  : Installation PASS (maintainer report); detailed regression pending
+26H2 / Build 26300  : Installation PASS (maintainer report); prerequisite/regression audit pending
 
-GitHub ISO Releases   : Not yet published; redistribution rights to be confirmed
+GitHub Release pages : 24H2 / 25H2 / 26H2 public; ISO assets not uploaded
 Archive password      : 1742 (only if legally distributable archives are published)
 ```
