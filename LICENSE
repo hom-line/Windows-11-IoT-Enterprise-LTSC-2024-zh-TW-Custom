@@ -35,4 +35,14 @@ Those remain subject to their respective owners' licenses and terms.
 不涵蓋 Windows ISO／WIM／ESD、Microsoft 應用程式或授權檔、Dolby、
 第三方／OEM 二進位檔與商標。技術分享不表示獲得第三方再散布授權。
 使用者須自行檢查適用授權與使用風險；免責範圍以適用法律允許者為限。
+
+Technical sharing only. Users are responsible for ensuring that their own
+installation, modifications, testing, activation and redistribution are
+lawfully authorized, and for assessing operational risks. This statement
+cannot override third-party licenses or liabilities that law does not permit
+the project author to exclude.
+
+本儲存庫僅提供技術研究、教學與經驗分享，不提供或保證任何 Windows、
+Microsoft、Dolby 或第三方軟體之使用、啟用或再散布權利。使用者應自行
+確認所需授權、備份資料並評估操作風險；依法不得排除之責任仍依法處理。
 See docs/LEGAL_NOTICE_zh-TW.md for additional scope and usage notices.

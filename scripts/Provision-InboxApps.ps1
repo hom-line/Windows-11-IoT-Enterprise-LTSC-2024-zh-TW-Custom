@@ -92,7 +92,7 @@ try {
         if(-not $names.Add($name)){throw "Duplicate manifest package: $name"}
         if($kind -notin @('App','Framework')){throw "Invalid kind for $name (use App or Framework)."}
         if($kind -eq 'App' -and $name -notin $expected){throw "App is not in project's 17-item allowlist: $name"}
-        if($kind -eq 'Framework' -and $name -notmatch '^Microsoft\.(NET\.Native\.(Framework|Runtime)\.|UI\.Xaml\.|VCLibs\.)'){
+        if($kind -eq 'Framework' -and $name -notmatch '^Microsoft\.(NET\.Native\.(Framework|Runtime)\.|UI\.Xaml\.|VCLibs\.|WindowsAppRuntime\.)'){
             throw "Framework name not allowed: $name"
         }
         $pkgPath=Resolve-WithinRoot ([string](Get-Prop $entry 'package'))
@@ -112,6 +112,18 @@ try {
                     throw "Dependency file type not allowed: $dp"
                 }
                 Check-Hash $dp ([string](Get-Prop $dep 'sha256'))
+                $depName=[string](Get-Prop $dep 'name')
+                if($depName){
+                    if($depName -notmatch '^Microsoft\.(NET\.Native\.(Framework|Runtime)\.|UI\.Xaml\.|VCLibs\.|WindowsAppRuntime\.)'){
+                        throw "Dependency name is not an allowed Microsoft framework: $depName"
+                    }
+                    if(-not [IO.Path]::GetFileName($dp).StartsWith($depName,[StringComparison]::OrdinalIgnoreCase)){
+                        throw "Dependency filename and declared name do not match: $depName"
+                    }
+                }
+                if([IO.Path]::GetFileName($dp) -match '(?i)(HEVC|Dolby|AC[-_]?3)'){
+                    throw "Excluded codec/third-party component in dependency: $dp"
+                }
                 $dependencyPaths+= $dp
             }
         }
