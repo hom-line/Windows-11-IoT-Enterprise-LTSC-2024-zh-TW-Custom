@@ -6,7 +6,7 @@
 | Edition | IoTEnterpriseS（自製測試映像） |
 | 架構、語言 | x64 / zh-TW |
 | 更新路線 | 已更新的 24H2 參考映像；離線 MSU：無 |
-| 狀態 | 官方 Windows 11 IoT Enterprise LTSC 2024 基礎；R3 安裝／OOBE PASS |
+| 狀態 | 官方 Windows 11 IoT Enterprise LTSC 2024 基礎；R3 安裝／OOBE PASS（已提供測試畫面） |
 | ISO 檔名 | `zh-tw_windows_11_IoT_enterprise_ltsc_2024_x64_dvd_6287d84d_24H2_App.iso` |
 
 ## 共用預裝內容
@@ -17,8 +17,12 @@
 
 24H2 是官方 LTSC 2024 版本基礎；25H2／26H2 是將相關 Enablement Package 應用於 LTSC 基礎上的**非官方實驗改版**，不表示 Microsoft 支援此 LTSC 升級路線。25H2 和 26H2 各自由 24H2 分支建立，不是連續升級。
 
-## 公開 Release 附件狀態
+## 測試驗證與公開 Release 附件狀態
 
-目前僅準備發布說明，**未公開提供 ISO**。Windows 與 Dolby 元件的公開再散布權尚未確認。若日後取得權利，採用 7-Zip 分卷（單卷小於 2 GiB）、密碼 `1742` 並附實際 SHA-256；密碼不是授權。
+三個 Release 頁面已公開，**尚未提供 ISO 附件**。Windows 與 Dolby 元件的公開再散布權尚未確認。若日後取得權利，採用 7-Zip 分卷（單卷小於 2 GiB）、密碼 `1742` 並附實際 SHA-256；密碼不是授權。
 
 [返回完整 README](../README.md)
+
+## 驗收說明
+
+本專案作者確認 24H2、25H2、26H2 三個版本**均已進行安裝測試並成功使用**。三版共同預裝內容相同；惟個別 Apps、AC-3／E-AC-3 原生播放、Windows Update 後的全面回歸及授權驗證，仍須以個別測試報告判定，不以系統安裝成功代替。
