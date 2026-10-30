@@ -25,6 +25,23 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 > [!NOTE]
 > ISO Metadata 與 SHA-256 總表已出現在 [24H2 App Release](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3) 的附件中；公開的中繼資料仍應留意隱私與來源欄位。
 
+## 🛠️ PowerShell 工具／原創腳本
+
+本 Repository 現已包含與 Windows 10 舊專案用途相對應的三支 **Windows 11 專用** PowerShell 5.1 工具，適用於 24H2／25H2／26H2 自訂測試環境：
+
+| 檔案 | 功能 | 執行模式 |
+|---|---|---|
+| [Provision-InboxApps.ps1](scripts/Provision-InboxApps.ps1) | 合法來源 AppX/MSIX＋授權 XML＋SHA-256 預檢，Framework 優先、17 項 Inbox Apps 佈建 | **預設唯讀預檢**，必須明確使用 `-Apply -AcknowledgeReferenceImage` 才修改 Windows |
+| [Verify-InboxApps.ps1](scripts/Verify-InboxApps.ps1) | 檢查 17 項 App Provisioning、實際 Framework 清單、NetFx3、Fax and Scan、XPS Viewer | **唯讀** |
+| [Verify-Windows-Edition.ps1](scripts/Verify-Windows-Edition.ps1) | 檢查 `IoTEnterpriseS`、24H2／25H2／26H2、主 Build、x64、zh-TW | **唯讀** |
+
+- [完整操作教學、合法套件 Manifest 範例](docs/SCRIPTS_zh-TW.md)
+- [MIT LICENSE（僅原創腳本與文件）](LICENSE)
+- [技術分享、使用風險與第三方授權聲明](docs/LEGAL_NOTICE_zh-TW.md)
+
+> [!IMPORTANT]
+> **這些工具是第一版原創交付，尚未在三個 Windows 11 VM 完成 PowerShell Parser／真實執行驗收。** 使用者須自行評估操作風險、建立快照並遵守授權條款。上述 MIT License **不涵蓋** Windows ISO、Microsoft、Dolby 或第三方二進位檔。所有免責與責任分配僅於適用法律允許範圍內生效。
+
 ## ⚠️ Important Notice / 重要聲明
 
 **Microsoft 官方 Windows 11 IoT Enterprise LTSC 2024 為 24H2／Build 26100**，並不是官方的「25H2 LTSC」或「26H2 LTSC」。
