@@ -15,6 +15,16 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 
 ---
 
+## 📚 建置與驗收報告
+
+已整理正式的公開紀錄，供開發者與使用者核對版本來源、製作流程及測試範圍：
+
+- [建置紀錄／三版本製作流程（繁體中文）](docs/BUILD_zh-TW.md) — 24H2、25H2、26H2 的獨立分支、Inbox Apps、FOD、Sysprep、WIM／ISO 與 Setup 修正。
+- [驗收報告／ISO 完整性校驗（繁體中文）](docs/VALIDATION_zh-TW.md) — 三版安裝 PASS、SHA-256 首次與再次驗證 PASS，以及尚未提供完整證據的功能回歸項目。
+
+> [!NOTE]
+> 共用的 ISO Metadata／SHA-256 總表仍需從原始本機檔案整理、排除個人路徑等敏感資訊後上傳；這兩份共用附件尚未確認存在，因此暫不提供下載連結。
+
 ## ⚠️ Important Notice / 重要聲明
 
 **Microsoft 官方 Windows 11 IoT Enterprise LTSC 2024 為 24H2／Build 26100**，並不是官方的「25H2 LTSC」或「26H2 LTSC」。
