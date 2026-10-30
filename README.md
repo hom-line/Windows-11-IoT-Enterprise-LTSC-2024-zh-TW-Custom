@@ -23,7 +23,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 - [驗收報告／ISO 完整性校驗（繁體中文）](docs/VALIDATION_zh-TW.md) — 三版安裝 PASS、SHA-256 首次與再次驗證 PASS，以及尚未提供完整證據的功能回歸項目。
 
 > [!NOTE]
-> 共用的 ISO Metadata／SHA-256 總表仍需從原始本機檔案整理、排除個人路徑等敏感資訊後上傳；這兩份共用附件尚未確認存在，因此暫不提供下載連結。
+> ISO Metadata 與 SHA-256 總表已出現在 [24H2 App Release](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3) 的附件中；公開的中繼資料仍應留意隱私與來源欄位。
 
 ## ⚠️ Important Notice / 重要聲明
 
@@ -38,7 +38,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 > [!WARNING]
 > - 25H2／26H2 在本專案中的「LTSC」名稱僅說明自訂參考映像**來源**與 Edition 研究結果，**不表示 Microsoft 核准此 LTSC 更新路徑或承諾 LTSC 支援生命週期**。
 > - 這些映像不提供 Windows 授權、產品金鑰、啟用繞過或破解功能。
-> - 本儲存庫目前為公開**技術文件專案**。Windows 安裝 ISO 及 Dolby／其他第三方二進位檔是否能再散布，應先取得相應權利；**壓縮密碼不是授權**。
+> - 本儲存庫及 Release 已公開，**且已包含 Windows 安裝映像的加密分卷**。如未具有 Microsoft／Dolby／第三方元件的再散布權，應立即暫停公開提供並移除相關附件；**壓縮密碼不是授權**。
 
 官方資料：[Windows 11 IoT Enterprise LTSC 2024](https://learn.microsoft.com/zh-tw/windows/iot/iot-enterprise/whats-new/windows-11-iot-enterprise-ltsc-2024) · [Windows IoT Enterprise 發行歷程](https://learn.microsoft.com/zh-tw/windows/iot/iot-enterprise/whats-new/release-history)
 
@@ -46,7 +46,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 
 # ⬇️ Download / 下載與版本狀態
 
-**三個 GitHub Release 頁面已公開，且專案作者回報三個 ISO 均已測試安裝成功。** 目前 Release 頁面尚無 ISO 檔案附件；相關再散布權利與逐項驗收證據仍須確認。
+**三個 GitHub Release 頁面已公開，且專案作者回報三個 ISO 均已測試安裝成功。** 目前已公開 24H2（3 卷）、25H2（6 卷）、26H2（6 卷）的加密 ISO 分卷及各自 SHA-256 清單；另需確認再散布權利與逐項驗收證據。
 
 | 順序 | 公開 Release | Edition | 版本 | 主 Build | 語言 | 預裝內容 | 安裝測試 |
 |---|---|---|---|---|---|---|---|
@@ -56,6 +56,19 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 
 > [!NOTE]
 > 版本表中 `26100`、`26200`、`26300` 是主 Build；`26100.1742`、`26200.9457`、`26300.9457` 等為個別實驗時點曾觀察到的完整 Build，**不代表最新更新，也不保證三版具有相同的累積更新修訂號**。
+
+### 📦 已發布的 7-Zip 分卷／公開附件索引
+
+| Release | 分卷 | 分卷校驗清單 | ISO SHA-256 | 附件狀態 |
+|---|---:|---|---|---|
+| [24H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3) | **3** | [SHA256_7Z_Parts_24H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_7Z_Parts_24H2.txt) | [SHA256_24H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_24H2.txt) | 已上傳 |
+| [25H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/25H2-App-Experimental) | **6** | [SHA256_7Z_Parts_25H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/25H2-App-Experimental/SHA256_7Z_Parts_25H2.txt) | [SHA256_25H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/25H2-App-Experimental/SHA256_25H2.txt) | 已上傳 |
+| [26H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/26H2-App-Experimental) | **6** | [SHA256_7Z_Parts_26H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/26H2-App-Experimental/SHA256_7Z_Parts_26H2.txt) | [SHA256_26H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/26H2-App-Experimental/SHA256_26H2.txt) | 已上傳 |
+
+24H2 的共同資料另有 [SHA256_ALL.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_ALL.txt) 與 [ISO_Metadata.csv](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/ISO_Metadata.csv)。
+
+> [!CAUTION]
+> 本節紀錄公開上傳的客觀狀態，不代表 Microsoft 或 Dolby 授權轉載。若缺乏再散布權利，請將二進位附件下架。Github 上存在的附件不代表其內容已獲官方授權、審查或驗證。
 
 ## 🔐 SHA-256 / 已公開的 ISO 校驗檔
 
@@ -68,7 +81,7 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 | **26H2 App** | [SHA256_26H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/26H2-App-Experimental/SHA256_26H2.txt) | **PASS** |
 
 > [!NOTE]
-> SHA-256 可檢查取得的檔案是否與專案校驗檔一致，**不代表 Microsoft 官方簽章、原廠授權或映像安全審核**。目前公開的 Release 附件僅有 SHA-256 校驗檔，**尚未提供 ISO 檔案**；Windows／Dolby 元件的公開再散布權利仍需先確認。
+> SHA-256 可檢查取得的檔案是否與專案校驗檔一致，**不代表 Microsoft 官方簽章、原廠授權或映像安全審核**。目前公開附件除校驗檔外，另有三版加密 ISO 分卷；Windows／Dolby 等再散布權利必須另外確認，下載與 SHA-256 驗證本身不能作為授權依據。
 
 ### ISO File Names / ISO 檔案命名
 
@@ -82,16 +95,16 @@ zh-tw_windows_11_IoT_enterprise_ltsc_2024_x64_dvd_6287d84d_26H2_App.iso
 
 ## 🔑 Archive / 壓縮格式與密碼
 
-規劃使用 **7-Zip 加密分卷（`.7z.001`、`.7z.002`……）**；每個分卷應小於 GitHub Release 的 **2 GiB 單檔限制**。
+已使用 **7-Zip 加密分卷（`.7z.001`、`.7z.002`……）** 發布，單卷最大 1800 MiB，低於 GitHub Release 的 2 GiB 單檔限制。
 
 ```text
 Archive Format  : 7z (split volumes)
 Archive Password: 1742
 ```
 
-若未來在符合授權條件下發布分卷，必須下載**該版本的全部分卷**、放在同一資料夾，並從 `.7z.001` 開始使用 7-Zip 解壓；**不需要逐個解壓分卷**。分卷數量應以實際 Release 附件為準，**不可預先假設每個版本都是五卷**。
+如具備合法使用與取得權利，下載時必須取得**同一版本全部分卷**、放在同一資料夾，從 `.7z.001` 開始使用 7-Zip 解壓；**不需要逐卷解壓**。目前分卷數為：24H2 **3 卷**、25H2 **6 卷**、26H2 **6 卷**。
 
-各版本的 SHA-256 校驗檔已於 Release 公開；ISO 檔案尚未公開提供，因此不列出不存在的 ISO 下載連結。
+三個版本的加密 ISO 分卷、原始 ISO SHA-256，以及 `SHA256_7Z_Parts_版本.txt` 均已上傳。**已驗證的是 GitHub 附件的存在、檔名和大小，以及本機封裝測試；尚未從 GitHub 重新下載全套分卷做端到端還原驗證。**
 
 ---
 
@@ -503,9 +516,9 @@ slmgr /xpr
 
 # 🔐 Security / Integrity
 
-若日後在授權允許的情況下提供 Release 附件，建議流程：
+針對目前已發布的 Release 分卷，使用者若具有適用授權，建議執行以下完整性驗證流程：
 
-1. 下載同一 Release 的**全部分卷**及對應 `SHA256.txt`。
+1. 下載同一 Release 的**全部分卷**，及其 `SHA256_7Z_Parts_版本.txt` 和 `SHA256_版本.txt`。
 2. 逐卷核對 SHA-256，避免下載不完整或內容遭修改。
 3. 將 `.7z.001`、`.002`……放在**同一資料夾**。
 4. 使用 7-Zip 從 `.001` 開始解壓。
@@ -530,7 +543,7 @@ Windows、Windows IoT Enterprise、Microsoft Store、Windows Inbox Apps、Micros
 - 若將來為本專案原創腳本／說明文件設定開源授權，**其授權也不延伸到 Microsoft／Dolby 二進位檔、OEM 授權檔或安裝 ISO**。
 - 不包含啟用破解、未授權授權檔、產品金鑰或 DRM／授權規避機制。
 - 研究環境應保留合法授權來源、檔案雜湊、測試報告及必要的第三方許可。
-- **在確認公開分發權利之前，不提供 Windows ISO 直接下載附件。**
+- **目前 Windows ISO 分卷已公開；若尚未取得相應的 Windows／第三方元件再散布權利，應立即移除公開附件並先完成授權核對。**
 
 This project is **not affiliated with, sponsored by, or endorsed by Microsoft Corporation or Dolby Laboratories**.
 
@@ -561,6 +574,6 @@ Same preinstalled set : 17 Inbox Apps + required frameworks + FOD + WordPad/AC-3
 25H2 / Build 26200  : Installation PASS (maintainer report); detailed regression pending
 26H2 / Build 26300  : Installation PASS (maintainer report); prerequisite/regression audit pending
 
-GitHub Release pages : 24H2 / 25H2 / 26H2 public; ISO assets not uploaded
+GitHub Release pages : Public; 15 encrypted ISO volumes plus checksum assets uploaded
 Archive password      : 1742 (only if legally distributable archives are published)
 ```
