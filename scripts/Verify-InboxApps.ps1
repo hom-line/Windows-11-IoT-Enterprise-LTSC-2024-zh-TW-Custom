@@ -1,4 +1,5 @@
 #Requires -Version 5.1
+#Requires -RunAsAdministrator
 <#
 .SYNOPSIS
   Read-only audit of the project's 17 Microsoft Inbox Apps and FOD.
@@ -52,7 +53,10 @@ try {
     $rx='^(Microsoft\.NET\.Native\.(Framework|Runtime)\.|Microsoft\.UI\.Xaml\.|Microsoft\.VCLibs\.)'
     $fwi=@($installed | Where-Object {$_.Name -match $rx})
     $fwp=@($provisioned | Where-Object {$_.DisplayName -match $rx})
-    $frameworkNames=@(@($fwi | ForEach-Object {$_.Name}) + @($fwp | ForEach-Object {$_.DisplayName}) | Where-Object {$_} | Sort-Object -Unique)
+    $allNames=@()
+    $allNames+=@($fwi | ForEach-Object {$_.Name})
+    $allNames+=@($fwp | ForEach-Object {$_.DisplayName})
+    $frameworkNames=@($allNames | Where-Object {$_} | Sort-Object -Unique)
     foreach($name in $frameworkNames){
         $ic=@($fwi | Where-Object {$_.Name -eq $name}).Count
         $pc=@($fwp | Where-Object {$_.DisplayName -eq $name}).Count
