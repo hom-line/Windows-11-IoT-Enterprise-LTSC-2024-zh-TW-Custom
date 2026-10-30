@@ -10,7 +10,7 @@
 | 檔案 | 功能 | 預設狀態 |
 |---|---|---|
 | [Verify-Windows-Edition.ps1](../scripts/Verify-Windows-Edition.ps1) | Edition、24H2/25H2/26H2、Build、x64、zh-TW | 唯讀 |
-| [Verify-InboxApps.ps1](../scripts/Verify-InboxApps.ps1) | 17 項 Inbox Apps、Framework 清單、NetFx3、Fax and Scan、XPS Viewer | 唯讀 |
+| [Verify-InboxApps.ps1](../scripts/Verify-InboxApps.ps1) | 17 項 Inbox Apps、由 Manifest 核對必要 Framework、NetFx3、Fax and Scan、XPS Viewer | 唯讀 |
 | [Provision-InboxApps.ps1](../scripts/Provision-InboxApps.ps1) | SHA-256／授權／套件相依性預檢、合法來源 AppX/MSIX 佈建 | 預設唯讀，明確指定 -Apply 才會修改 |
 
 使用 **Windows PowerShell 5.1（以系統管理員身分執行）**。指令中的 `.\scripts\` 是 GitHub 專案目錄下的相對路徑；無需 Git CLI，亦可從 GitHub 網頁下載原始腳本。
@@ -32,13 +32,13 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\scripts\Verify-Window
 
 ```powershell
 New-Item -ItemType Directory C:\Temp -Force | Out-Null
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\scripts\Verify-InboxApps.ps1" -CsvPath "C:\Temp\Win11_Apps.csv" -JsonPath "C:\Temp\Win11_Apps.json"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\scripts\Verify-InboxApps.ps1" -ManifestPath "D:\Win11AppConfig\InboxApps.manifest.json" -CsvPath "C:\Temp\Win11_Apps.csv" -JsonPath "C:\Temp\Win11_Apps.json"
 ```
 
 17 項套件名稱：Microsoft.StorePurchaseApp、Microsoft.WindowsStore、Microsoft.DesktopAppInstaller、Microsoft.WindowsCalculator、Microsoft.Paint、Microsoft.WindowsNotepad、Microsoft.ScreenSketch、Microsoft.WindowsCamera、Microsoft.Windows.Photos、Microsoft.ZuneMusic、Microsoft.AV1VideoExtension、Microsoft.AVCEncoderVideoExtension、Microsoft.VP9VideoExtensions、Microsoft.HEIFImageExtension、Microsoft.WebpImageExtension、Microsoft.WebMediaExtensions、Microsoft.MPEG2VideoExtension。
 
 - Apps 的 **Provisioned（新使用者佈建）** 是必要檢查；已安裝狀態與 Framework 偵測是另外列示的資料。
-- Framework 不硬編 Windows 10 舊專案的 18 組固定版本，而依實際 `Microsoft.NET.Native`、`Microsoft.UI.Xaml`、`Microsoft.VCLibs` 辨識，標為 INFO，**不代表完成每個 App 的相依性解析**。
+- Framework 不硬編 Windows 10 舊專案的固定版本。支援 `Microsoft.NET.Native`、`Microsoft.UI.Xaml`、`Microsoft.VCLibs`、`Microsoft.WindowsAppRuntime`。加上 `-ManifestPath` 時，依佈建 Manifest 的 `Framework` 項目與 App 的 `dependencies` 核對新使用者佈建清單，缺少必要 Framework 即 FAIL。未指定 Manifest 時僅提供盤點，狀態為 **NOT_CHECKED**（exit 3），不能宣稱 Framework 全部通過。Manifest 完整性及實際 App 啟動仍須人工驗證。
 - FOD 包含 `NetFx3`、`Print.Fax.Scan~~~~0.0.1.0`、`XPS.Viewer~~~~0.0.1.0`。
 - 未將 HEVC 列入 17 項。WordPad 和 Dolby AC-3／E-AC-3 的真實啟動、播放仍需獨立測試。
 
@@ -85,6 +85,7 @@ D:\Win11AppConfig\
       "licenseSha256": "REPLACE_WITH_ACTUAL_64_HEX_SHA256",
       "dependencies": [
         {
+          "name": "Microsoft.VCLibs.140.00",
           "package": "frameworks/Microsoft.VCLibs.140.00_EXAMPLE.appx",
           "sha256": "REPLACE_WITH_ACTUAL_64_HEX_SHA256"
         }
@@ -118,12 +119,12 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\scripts\Provision-Inb
 
 依 Framework → Apps 順序執行；已佈建套件會略過，不移除或降版；PowerShell 會以 ShouldProcess 請求確認。合法免 License XML 的套件才可在 Manifest 宣告 `licenseNotRequired: true`，且額外提供 `-AllowLicenseFree`。**不能將此當作規避授權的手段**。
 
-安裝後仍須執行兩支 Verify、以新的 Windows 使用者開啟 Apps，並檢查 Sysprep／OOBE／Windows Update 回歸。WordPad、Dolby 不屬於此佈建腳本範圍。
+安裝後仍須執行兩支 Verify（Inbox Apps 驗證需提供相同的 `-ManifestPath`）、以新的 Windows 使用者開啟 Apps，並檢查 Sysprep／OOBE／Windows Update 回歸。WordPad、Dolby 不屬於此佈建腳本範圍。
 
 ## 4. 版本與測試狀態
 
 - GitHub 第一版原始碼、README、授權聲明：**已提交**。
-- PowerShell Parser／Windows 11 VM 真實執行：**待驗收**。
+- PowerShell Parser／Windows 11 VM 真實執行：**待驗收**。驗證腳本的 exit code：0=全部已宣告的必要條件通過、1=缺失、2=執行錯誤、3=未提供 Manifest，Framework 查核不完整。
 - 17 項合法來源 AppX/MSIX／授權 XML：**由使用者依授權自行準備**。
 - 本專案僅是原創腳本與技術分享；[使用風險與法律授權範圍](LEGAL_NOTICE_zh-TW.md)。
 
