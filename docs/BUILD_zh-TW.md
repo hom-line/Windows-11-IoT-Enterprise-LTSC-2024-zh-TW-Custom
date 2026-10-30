@@ -111,4 +111,4 @@ zh-tw_windows_11_IoT_enterprise_ltsc_2024_x64_dvd_6287d84d_26H2_App.iso
 
 ## 7. 授權與用途
 
-公開 Repository 用於記錄技術流程與公開校驗資料。Windows、Microsoft Store、OEM／Dolby 影音套件及其授權檔案的公開再散布必須遵守適用授權。**目前不附 Windows ISO 或第三方二進位安裝檔。**
+公開 Repository 用於記錄技術流程與公開校驗資料。Windows、Microsoft Store、OEM／Dolby 影音套件及其授權檔案的公開再散布必須遵守適用授權。**目前已在 GitHub Releases 公開三版加密 ISO 分卷（24H2 三卷、25H2 六卷、26H2 六卷）；如未具備 Microsoft／Dolby 等適用再散布權利，應立即下架二進位附件。密碼不代表授權。**
