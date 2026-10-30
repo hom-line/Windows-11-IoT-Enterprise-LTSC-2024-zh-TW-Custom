@@ -19,7 +19,11 @@
 
 ## 測試驗證與公開 Release 附件狀態
 
-三個 Release 頁面已公開，**尚未提供 ISO 附件**。Windows 與 Dolby 元件的公開再散布權尚未確認。若日後取得權利，採用 7-Zip 分卷（單卷小於 2 GiB）、密碼 `1742` 並附實際 SHA-256；密碼不是授權。
+三個 Release 頁面已公開，本版已上傳 **3 個加密 ISO 分卷**（7-Zip，單卷最多 1800 MiB），並附原始 ISO 與分卷 SHA-256 清單。密碼為 `1742`。本機 7-Zip 測試 PASS；**尚未將 GitHub 附件全套重新下載解壓驗證**。Windows 與 Dolby 等元件的公開再散布權須另行確認，密碼不等於授權。
+
+
+- [24H2 分卷 SHA-256 清單](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_7Z_Parts_24H2.txt)
+- [24H2 原始 ISO SHA-256](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_24H2.txt)
 
 [返回完整 README](../README.md)
 
