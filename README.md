@@ -47,6 +47,19 @@ Custom Windows 11 IoT Enterprise LTSC 2024 reference-image, Windows Inbox Apps p
 > [!NOTE]
 > 版本表中 `26100`、`26200`、`26300` 是主 Build；`26100.1742`、`26200.9457`、`26300.9457` 等為個別實驗時點曾觀察到的完整 Build，**不代表最新更新，也不保證三版具有相同的累積更新修訂號**。
 
+## 🔐 SHA-256 / 已公開的 ISO 校驗檔
+
+三個 ISO 已在本機完成 SHA-256 計算，並經再次執行 `-Verify` 全部通過。以下校驗檔已上傳至各自公開的 GitHub Release：
+
+| 版本 | SHA-256 下載 | 校驗結果 |
+|---|---|---|
+| **24H2 App** | [SHA256_24H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_24H2.txt) | **PASS** |
+| **25H2 App** | [SHA256_25H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/25H2-App-Experimental/SHA256_25H2.txt) | **PASS** |
+| **26H2 App** | [SHA256_26H2.txt](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/26H2-App-Experimental/SHA256_26H2.txt) | **PASS** |
+
+> [!NOTE]
+> SHA-256 可檢查取得的檔案是否與專案校驗檔一致，**不代表 Microsoft 官方簽章、原廠授權或映像安全審核**。目前公開的 Release 附件僅有 SHA-256 校驗檔，**尚未提供 ISO 檔案**；Windows／Dolby 元件的公開再散布權利仍需先確認。
+
 ### ISO File Names / ISO 檔案命名
 
 ```text
@@ -68,7 +81,7 @@ Archive Password: 1742
 
 若未來在符合授權條件下發布分卷，必須下載**該版本的全部分卷**、放在同一資料夾，並從 `.7z.001` 開始使用 7-Zip 解壓；**不需要逐個解壓分卷**。分卷數量應以實際 Release 附件為準，**不可預先假設每個版本都是五卷**。
 
-在 Release 附件與 `SHA256.txt` 真正建立前，此處不提供虛構的直接下載連結。
+各版本的 SHA-256 校驗檔已於 Release 公開；ISO 檔案尚未公開提供，因此不列出不存在的 ISO 下載連結。
 
 ---
 
