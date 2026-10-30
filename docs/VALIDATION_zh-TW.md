@@ -1,6 +1,6 @@
-# Windows 11 三版本建置與驗收紀錄（2026-10-30）
+# Windows 11 三版本建置與驗收紀錄（更新至 2026-10-31）
 
-本報告依本專案可檢查到的 GitHub 發布資訊、開發者先前提供的畫面／操作紀錄，及 **2026-10-30 的 PowerShell SHA-256 校驗結果**整理。個別驗收項目與證據來源明確區分；本報告不是獨立第三方認證。
+本報告依本專案可檢查到的 GitHub 發布資訊、開發者先前提供的畫面／操作紀錄、**2026-10-30 的 PowerShell SHA-256 校驗結果**，以及 **2026-10-31 開發者對三個 ISO 皆已實際全新重灌的補充確認**整理。個別驗收項目與證據來源明確區分；本報告不是獨立第三方認證。
 
 ## 1. 版本總覽
 
@@ -9,8 +9,8 @@
 | 系統主 Build | 26100 | 26200 | 26300 |
 | 曾觀察之 Build | 26100.1742（R3 測試映像） | 26200.9457 | 26300.9457 |
 | Edition 紀錄 | IoTEnterpriseS | IoTEnterpriseS | IoTEnterpriseS |
-| 安裝測試 | **PASS**（R3 全新安裝／OOBE 有歷史畫面） | **PASS**（開發者最新回報） | **PASS**（開發者最新回報） |
-| 共同 17 項 Inbox Apps | 相同製作配置 | 相同製作配置 | 相同製作配置 |
+| ISO 全新重灌 | **PASS**（R3 全新安裝／OOBE 有歷史畫面） | **PASS**（開發者確認使用 25H2 ISO 全新重灌） | **PASS**（開發者確認使用 26H2 ISO 全新重灌） |
+| 共同 17 項 Inbox Apps | 相同製作配置 | 開發者回報與 24H2 重灌結果一致 | 開發者回報與 24H2 重灌結果一致 |
 | SHA-256 首次計算 | **PASS** | **PASS** | **PASS** |
 | SHA-256 重新驗證 | **PASS** | **PASS** | **PASS** |
 | 公開個別 SHA-256 | [已上傳](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/24H2-App-R3/SHA256_24H2.txt) | [已上傳](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/25H2-App-Experimental/SHA256_25H2.txt) | [已上傳](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/download/26H2-App-Experimental/SHA256_26H2.txt) |
@@ -18,7 +18,7 @@
 | ISO 公開再散布權利 | 尚未確認 | 尚未確認 | 尚未確認 |
 
 > [!IMPORTANT]
-> **安裝 PASS** 是能完成安裝並使用 Windows 的驗證，**不是**逐項完成 Microsoft Store、各種影音編碼、AC-3／E-AC-3、Windows Update 與長期穩定度的統一 PASS。SHA-256 僅證明檔案完整性的一致性，不驗證來源簽章、無惡意程式或授權。
+> **安裝 PASS** 已根據作者確認的三次 ISO 全新重灌記錄，不需要為了新腳本再重複同一項安裝測試；但該結果**不是**逐項完成 Microsoft Store、各種影音編碼、AC-3／E-AC-3、Windows Update、Framework 相依性及長期穩定度的統一 PASS。SHA-256 僅證明檔案完整性的一致性，不驗證來源簽章、無惡意程式或授權。
 
 ## 2. 原始建置／功能證據
 
@@ -31,13 +31,13 @@
 ### 25H2
 
 - 自已更新的 24H2 參考映像套用 `KB5054156.msu`，版本畫面曾呈現 26200.9457。
-- 開發者最新明確回報：25H2 ISO 已測試，可正常安裝使用。
+- 開發者於 2026-10-31 再次確認：**實際使用 25H2 ISO 全新重灌成功**，整體安裝及使用結果與 24H2 一致。此為開發者實測回報，非本報告獨立重現。
 - 未取得完整的逐項 App、音效解碼及 Windows Update 測試 CSV／截圖彙整。
 
 ### 26H2
 
 - 自獨立已更新的 24H2 參考映像套用 `KB5121794.msu`，版本畫面曾呈現 26300.9457。
-- 開發者最新明確回報：26H2 ISO 已測試，可正常安裝使用。
+- 開發者於 2026-10-31 再次確認：**實際使用 26H2 ISO 全新重灌成功**，整體安裝及使用結果與 24H2 一致。此為開發者實測回報，非本報告獨立重現。
 - 需再核對相關累積更新先決條件、逐項 App／音效／Windows Update 及 WIM metadata 的完整證據。
 
 ## 3. ISO SHA-256 完整性驗證 — PASS
@@ -77,7 +77,7 @@ PASS：26H2 SHA-256 一致
 
 | 驗收項目 | 驗收方法 |
 |---|---|
-| 全新安裝／OOBE | 每個版本保存 VM 新磁碟安裝、OOBE 進桌面的時間及畫面 |
+| 全新安裝／OOBE | **三版均已由開發者確認成功，不再列為待重做。** 若要對外提供可稽核證據，可補存安裝時間、OOBE／桌面畫面及版本資訊 |
 | Windows 系統資訊 | `winver`、`EditionID`、`CurrentBuild` 與 `UBR` |
 | 17 項 Inbox Apps | App Provisioned／新使用者首次啟動／主功能操作 |
 | Framework 與 FOD | `NetFx3`、Fax／Scan、XPS Viewer 的狀態與操作 |
