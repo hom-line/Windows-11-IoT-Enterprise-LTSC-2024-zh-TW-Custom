@@ -95,4 +95,4 @@ PASS：26H2 SHA-256 一致
 - [26H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/26H2-App-Experimental)
 - [建置指南](BUILD_zh-TW.md)
 
-ISO 本體尚未公開發布；即使透過 7-Zip 密碼分卷，仍需符合再散布條款。
+目前 GitHub Releases **已公開三版加密 ISO 分卷，共 15 卷**，並提供對應分卷 SHA-256 清單。GitHub 附件名稱、大小、數量已核對；本機 7-Zip 整套分卷驗證 PASS，但尚未完成全部分卷從 GitHub 重新下載、還原並重新計算 ISO SHA-256 的端到端驗證。加密分卷不免除 Microsoft／Dolby 等第三方授權限制；如無適用再散布權，應立即下架。
