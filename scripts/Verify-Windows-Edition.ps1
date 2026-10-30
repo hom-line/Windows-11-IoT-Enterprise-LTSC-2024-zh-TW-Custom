@@ -36,21 +36,31 @@ try {
     $buildOK=$expectedBuild.ContainsKey($target) -and $build -eq $expectedBuild[$target]
     $versionOK=$version -eq $target -and $target -ne 'UNRECOGNIZED'
     $editionOK=$edition -eq 'IoTEnterpriseS'
-    $archOK=[Environment]::Is64BitOperatingSystem
+    $nativeArch=''
+    try {
+        $nativeArch=[System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString()
+    } catch {
+        $nativeArch=[string][Environment]::GetEnvironmentVariable('PROCESSOR_ARCHITECTURE','Machine')
+    }
+    $archOK=$nativeArch -in @('X64','AMD64')
     $locale=''
     try{$locale=(Get-WinSystemLocale -ErrorAction Stop).Name}catch{}
     $installed=@()
     if(Get-Command 'Get-InstalledLanguage' -ErrorAction SilentlyContinue){
         try{$installed=@(Get-InstalledLanguage -ErrorAction Stop | ForEach-Object {$_.LanguageId})}catch{}
     }
-    $langOK=$locale -eq 'zh-TW' -or $installed -contains 'zh-TW'
+    $systemUi=''
+    if(Get-Command 'Get-SystemPreferredUILanguage' -ErrorAction SilentlyContinue){
+        try{$systemUi=[string](Get-SystemPreferredUILanguage -ErrorAction Stop)}catch{}
+    }
+    $langOK=$locale -eq 'zh-TW' -or $installed -contains 'zh-TW' -or $systemUi -eq 'zh-TW'
     $langStatus=if($langOK){'PASS'}elseif($StrictLanguage){'FAIL'}else{'WARN'}
     $checks=@(
         [pscustomobject]@{Check='EditionID';Expected='IoTEnterpriseS';Actual=$edition;Status=$(if($editionOK){'PASS'}else{'FAIL'})}
         [pscustomobject]@{Check='Build';Expected=[string]$expectedBuild[$target];Actual=$buildText;Status=$(if($buildOK){'PASS'}else{'FAIL'})}
         [pscustomobject]@{Check='DisplayVersion';Expected=$target;Actual=$version;Status=$(if($versionOK){'PASS'}else{'FAIL'})}
-        [pscustomobject]@{Check='Architecture';Expected='x64';Actual=$(if($archOK){'x64'}else{'other'});Status=$(if($archOK){'PASS'}else{'FAIL'})}
-        [pscustomobject]@{Check='OS language';Expected='zh-TW';Actual=("SystemLocale={0}; Installed={1}" -f $locale,($installed -join ','));Status=$langStatus}
+        [pscustomobject]@{Check='Architecture';Expected='x64';Actual=$nativeArch;Status=$(if($archOK){'PASS'}else{'FAIL'})}
+        [pscustomobject]@{Check='OS language';Expected='zh-TW';Actual=("SystemLocale={0}; SystemUI={1}; Installed={2}" -f $locale,$systemUi,($installed -join ','));Status=$langStatus}
     )
     $result=[ordered]@{
         Timestamp=(Get-Date).ToString('o')
