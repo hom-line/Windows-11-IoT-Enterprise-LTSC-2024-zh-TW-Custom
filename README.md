@@ -12,7 +12,7 @@ Custom Windows 11 IoT Enterprise LTSC reference images, Traditional Chinese inte
 
 | Release | Edition ID | Version | Main Build | Language | 7-Zip Parts | Status |
 |---|---|---|---|---|---|---|
-| **[24H2 App R3](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3)** | `IoTEnterpriseS` | `24H2` | `26100` | `zh-TW` | **3** | **Recommended Baseline** |
+| **[24H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/24H2-App-R3)** | `IoTEnterpriseS` | `24H2` | `26100` | `zh-TW` | **3** | **Recommended Baseline** |
 | **[25H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/25H2-App-Experimental)** | `IoTEnterpriseS` | `25H2` | `26200` | `zh-TW` | **6** | Experimental |
 | **[26H2 App](https://github.com/hom-line/Windows-11-IoT-Enterprise-LTSC-2024-zh-TW-Custom/releases/tag/26H2-App-Experimental)** | `IoTEnterpriseS` | `26H2` | `26300` | `zh-TW` | **6** | Experimental |
 
