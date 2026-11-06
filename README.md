@@ -1,5 +1,7 @@
 # Windows 11 IoT Enterprise LTSC 2024 — Custom 24H2 / 25H2 / 26H2 zh-TW
 
+> ⭐ **製作與維護不易，感謝每一份支持！** 如果這個專案對你有幫助，歡迎點擊右上角的 **Star** ⭐。你的支持是作者持續改進、維護專案及推出下一次更新的動力！
+
 Custom Windows 11 IoT Enterprise LTSC reference images, Traditional Chinese integration, Inbox Apps, WordPad compatibility research, FOD, and Windows deployment documentation.
 
 本專案以 **Windows 11 IoT Enterprise LTSC 2024（24H2）** 為基礎，整合繁體中文、常用 Microsoft Apps、Windows Optional Features 與部署工具，並製作三套獨立的自訂系統映像：**24H2、25H2、26H2**。
